@@ -2,7 +2,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 // 1) Supabase Dashboard'da gördüğünüz API URL / Project URL değerini buraya yazın.
 // Örnek: "https://nmwilorpndsnzwqhruky.supabase.co"
-const SUPABASE_URL = "https://nmwilorpndsnzwqhruky.supabase.co/rest/v1/";
+const SUPABASE_URL = "https://nmwilorpndsnzwqhruky.supabase.co";
 
 // 2) Supabase Dashboard'dan aldığınız Publishable key değerini buraya yazın.
 // Secret key veya service_role key kullanmayın.
