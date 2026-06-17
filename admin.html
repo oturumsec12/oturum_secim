@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Paneli - Oturum Seçimi</title>
+  <link rel="stylesheet" href="./admin.css?v=1" />
+</head>
+<body>
+  <main class="admin-shell">
+    <section class="admin-card" aria-labelledby="adminTitle">
+      <header class="admin-header">
+        <div>
+          <h1 id="adminTitle">Oturum Seçimi Admin Paneli</h1>
+          <p>Slot doluluklarını görüntüleyebilir ve seçim listesini Excel dosyası olarak indirebilirsiniz.</p>
+        </div>
+        <a class="user-page-link" href="./index.html">Kullanıcı sayfasına dön</a>
+      </header>
+
+      <section id="loginView" class="login-view" aria-labelledby="loginTitle">
+        <h2 id="loginTitle">Admin Girişi</h2>
+        <p class="login-help">6 haneli alfanumerik admin kodunu giriniz.</p>
+
+        <div class="login-row">
+          <label class="sr-only" for="adminCodeInput">Admin kodu</label>
+          <input
+            id="adminCodeInput"
+            class="admin-code-input"
+            type="text"
+            maxlength="6"
+            autocomplete="off"
+            autocapitalize="characters"
+            spellcheck="false"
+            placeholder="Örn: A7K3P9"
+          />
+          <button id="loginButton" class="primary-button" type="button">Giriş yap</button>
+        </div>
+
+        <div id="loginMessage" class="message" role="alert" aria-live="polite"></div>
+      </section>
+
+      <section id="dashboardView" class="dashboard-view hidden" aria-labelledby="dashboardTitle">
+        <div class="dashboard-topbar">
+          <div>
+            <h2 id="dashboardTitle">Genel Durum</h2>
+            <p id="lastUpdatedText" class="last-updated">Henüz güncellenmedi.</p>
+          </div>
+
+          <div class="dashboard-actions">
+            <button id="refreshButton" class="secondary-button" type="button">Yenile</button>
+            <button id="exportButton" class="export-button" type="button">Excel'e aktar</button>
+            <button id="logoutButton" class="danger-outline-button" type="button">Çıkış</button>
+          </div>
+        </div>
+
+        <div id="dashboardMessage" class="message" role="alert" aria-live="polite"></div>
+
+        <div class="summary-grid" aria-label="Özet bilgiler">
+          <article class="summary-card">
+            <span class="summary-label">Toplam kişi</span>
+            <strong id="totalParticipants">0</strong>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">Seçim yapan</span>
+            <strong id="selectedParticipants">0</strong>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">Seçim yapmayan</span>
+            <strong id="unselectedParticipants">0</strong>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">Toplam slot</span>
+            <strong id="totalSlots">0</strong>
+          </article>
+        </div>
+
+        <section class="matrix-section" aria-labelledby="matrixTitle">
+          <div class="matrix-header">
+            <h2 id="matrixTitle">Slot Doluluk Matrisi</h2>
+            <p>Her kutu bir slotu gösterir. Kutudaki değer, seçim yapan kişi sayısı / 16 formatındadır.</p>
+          </div>
+
+          <div id="slotsGrid" class="slots-grid" aria-live="polite"></div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script type="module" src="./admin.js?v=1"></script>
+</body>
+</html>
