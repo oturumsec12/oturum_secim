@@ -44,12 +44,18 @@
             Kullanıcı kodunuzu girdikten sonra oturum listesi burada görünecektir.
           </div>
 
-          <div id="slotsContainer" class="slots-container" aria-live="polite"></div>
+          <div class="slot-workspace">
+            <div class="slot-scroll-box" aria-label="Müsait oturum listesi">
+              <div id="slotsContainer" class="slots-container" aria-live="polite"></div>
+            </div>
 
-          <button id="saveButton" class="save-button" type="button" disabled>
-            Seçim Yap
-          </button>
-          <div id="saveMessage" class="message" role="alert" aria-live="polite"></div>
+            <div class="save-panel">
+              <button id="saveButton" class="save-button" type="button" disabled>
+                Seçili oturumu kaydet
+              </button>
+              <div id="saveMessage" class="message" role="alert" aria-live="polite"></div>
+            </div>
+          </div>
         </section>
       </div>
     </section>

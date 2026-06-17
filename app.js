@@ -1,11 +1,15 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-// 1) Supabase Dashboard'dan aldığınız Project URL değerini buraya yazın.
+// 1) Supabase Dashboard'da gördüğünüz API URL / Project URL değerini buraya yazın.
+// Örnek: "https://nmwilorpndsnzwqhruky.supabase.co"
 const SUPABASE_URL = "https://nmwilorpndsnzwqhruky.supabase.co";
 
 // 2) Supabase Dashboard'dan aldığınız Publishable key değerini buraya yazın.
 // Secret key veya service_role key kullanmayın.
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_6e90naaunXrbVTlgmcm1iw_3eTTebiL";
+const SUPABASE_PUBLISHABLE_KEY = "BURAYA_SUPABASE_PUBLISHABLE_KEY";
+
+const SHOW_SLOTS_BUTTON_TEXT = "Oturum listesini göster";
+const SAVE_BUTTON_TEXT = "Seçili oturumu kaydet";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
@@ -169,7 +173,7 @@ async function loadOptions() {
   saveButton.disabled = true;
   slotsContainer.innerHTML = "";
   setInfo("Oturum listesi yükleniyor...");
-  setButtonLoading(showSlotsButton, true, "Yükleniyor...", "Oturum listesini göster");
+  setButtonLoading(showSlotsButton, true, "Yükleniyor...", SHOW_SLOTS_BUTTON_TEXT);
 
   try {
     const { data, error } = await supabase.rpc("app_get_options", {
@@ -199,7 +203,7 @@ async function loadOptions() {
     renderSlots(data.slots || []);
     saveButton.disabled = false;
   } finally {
-    setButtonLoading(showSlotsButton, false, "Yükleniyor...", "Oturum listesini göster");
+    setButtonLoading(showSlotsButton, false, "Yükleniyor...", SHOW_SLOTS_BUTTON_TEXT);
   }
 }
 
@@ -221,7 +225,7 @@ async function saveSelection() {
     return;
   }
 
-  setButtonLoading(saveButton, true, "Kaydediliyor...", "Seçim Yap");
+  setButtonLoading(saveButton, true, "Kaydediliyor...", SAVE_BUTTON_TEXT);
 
   try {
     const { data, error } = await supabase.rpc("app_select_session", {
@@ -243,7 +247,7 @@ async function saveSelection() {
     await loadOptions();
     setSaveSuccess("Seçiminiz kaydedildi.");
   } finally {
-    setButtonLoading(saveButton, false, "Kaydediliyor...", "Seçim Yap");
+    setButtonLoading(saveButton, false, "Kaydediliyor...", SAVE_BUTTON_TEXT);
   }
 }
 

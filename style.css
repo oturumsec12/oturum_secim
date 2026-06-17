@@ -14,7 +14,8 @@
   --navy: #001f5b;
   --red: #c1121f;
   --green: #147a38;
-  --button-bg: #111827;
+  --primary-button-bg: #1359a3;
+  --save-button-bg: #d71920;
   --button-text: #ffffff;
   --button-disabled: #9aa3af;
 }
@@ -25,6 +26,7 @@ body {
   background: var(--page-bg);
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
 }
 
 button,
@@ -35,7 +37,7 @@ input {
 .page-shell {
   width: 100%;
   min-height: 100vh;
-  padding: 32px 16px;
+  padding: 31px 16px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -47,31 +49,31 @@ input {
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
-  padding: 28px;
+  padding: 27px;
 }
 
 .app-header {
-  margin-bottom: 28px;
+  margin-bottom: 27px;
   border-bottom: 1px solid var(--border);
-  padding-bottom: 20px;
+  padding-bottom: 19px;
 }
 
 .app-header h1 {
   margin: 0 0 8px;
-  font-size: clamp(26px, 4vw, 38px);
+  font-size: clamp(25px, 4vw, 37px);
   line-height: 1.15;
 }
 
 .app-header p {
   margin: 0;
   color: var(--muted);
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.5fr);
-  gap: 28px;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(480px, 1.7fr);
+  gap: 27px;
 }
 
 .left-panel,
@@ -81,8 +83,8 @@ input {
 
 .left-panel h2,
 .right-panel h2 {
-  margin: 0 0 16px;
-  font-size: 22px;
+  margin: 0 0 15px;
+  font-size: 21px;
 }
 
 .input-label {
@@ -99,10 +101,10 @@ input {
 
 .code-input {
   width: 100%;
-  min-height: 46px;
+  min-height: 45px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 10px 12px;
+  padding: 9px 12px;
   text-transform: uppercase;
   outline: none;
 }
@@ -116,13 +118,21 @@ input {
 .save-button {
   border: 0;
   border-radius: 8px;
-  background: var(--button-bg);
   color: var(--button-text);
-  padding: 10px 16px;
-  min-height: 46px;
+  padding: 9px 15px;
+  min-height: 45px;
   cursor: pointer;
   font-weight: 700;
   white-space: nowrap;
+}
+
+.primary-button {
+  background: var(--primary-button-bg);
+}
+
+.save-button {
+  width: 100%;
+  background: var(--save-button-bg);
 }
 
 .primary-button:hover,
@@ -137,20 +147,15 @@ input {
   opacity: 1;
 }
 
-.save-button {
-  margin-top: 16px;
-  width: 100%;
-}
-
 .message {
-  min-height: 22px;
+  min-height: 21px;
   margin-top: 10px;
   font-weight: 700;
 }
 
 .info-message {
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 15px;
   color: var(--navy);
 }
 
@@ -163,18 +168,42 @@ input {
   color: var(--green);
 }
 
+.slot-workspace {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.slot-scroll-box {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-height: 460px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 12px;
+}
+
 .slots-container {
   display: grid;
   gap: 10px;
+  justify-items: start;
+}
+
+.save-panel {
+  flex: 0 0 235px;
+  position: sticky;
+  top: 16px;
 }
 
 .slot-card {
-  width: 100%;
+  width: min(520px, 100%);
   border: 2px solid transparent;
   border-radius: 8px;
   background: var(--slot-bg);
   color: #000000;
-  padding: 14px 16px;
+  padding: 13px 15px;
   text-align: left;
   cursor: pointer;
   transition: background-color 120ms ease, transform 120ms ease, border-color 120ms ease;
@@ -203,32 +232,54 @@ input {
 .slot-card-meta {
   display: block;
   margin-top: 4px;
-  font-size: 13px;
+  font-size: 12px;
   color: #333333;
 }
 
 .empty-state {
+  width: min(520px, 100%);
   border: 1px dashed var(--border);
   border-radius: 8px;
-  padding: 18px;
+  padding: 17px;
   color: var(--muted);
   background: #fafafa;
 }
 
-@media (max-width: 820px) {
-  .app-card {
-    padding: 20px;
-  }
-
+@media (max-width: 920px) {
   .layout {
     grid-template-columns: 1fr;
+  }
+
+  .slot-workspace {
+    flex-direction: column;
+  }
+
+  .slot-scroll-box,
+  .save-panel {
+    width: 100%;
+  }
+
+  .save-panel {
+    flex-basis: auto;
+    position: static;
+  }
+
+  .save-button {
+    width: auto;
+  }
+}
+
+@media (max-width: 620px) {
+  .app-card {
+    padding: 19px;
   }
 
   .code-row {
     flex-direction: column;
   }
 
-  .primary-button {
+  .primary-button,
+  .save-button {
     width: 100%;
   }
 }
