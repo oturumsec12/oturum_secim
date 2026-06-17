@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oturum Seçimi</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="app-card" aria-labelledby="pageTitle">
+      <header class="app-header">
+        <h1 id="pageTitle">Oturum Seçimi</h1>
+        <p>Kullanıcı kodunuzu girerek size uygun oturum slotlarından birini seçebilirsiniz.</p>
+      </header>
+
+      <div class="layout">
+        <section class="left-panel" aria-labelledby="codeTitle">
+          <h2 id="codeTitle">Kullanıcı Kodu</h2>
+
+          <label class="input-label" for="codeInput">Size verilen ID kodu</label>
+          <div class="code-row">
+            <input
+              id="codeInput"
+              class="code-input"
+              type="text"
+              autocomplete="off"
+              autocapitalize="characters"
+              spellcheck="false"
+              placeholder="Örn: R4T32"
+            />
+            <button id="showSlotsButton" class="primary-button" type="button">
+              Oturum listesini göster
+            </button>
+          </div>
+
+          <div id="codeMessage" class="message error-message" role="alert" aria-live="polite"></div>
+        </section>
+
+        <section class="right-panel" aria-labelledby="slotTitle">
+          <h2 id="slotTitle">Müsait Oturumlar</h2>
+
+          <div id="infoMessage" class="message info-message" aria-live="polite">
+            Kullanıcı kodunuzu girdikten sonra oturum listesi burada görünecektir.
+          </div>
+
+          <div id="slotsContainer" class="slots-container" aria-live="polite"></div>
+
+          <button id="saveButton" class="save-button" type="button" disabled>
+            Seçim Yap
+          </button>
+          <div id="saveMessage" class="message" role="alert" aria-live="polite"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
