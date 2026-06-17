@@ -2,11 +2,11 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 // 1) Supabase Dashboard'da gördüğünüz API URL / Project URL değerini buraya yazın.
 // Örnek: "https://nmwilorpndsnzwqhruky.supabase.co"
-const SUPABASE_URL = "https://nmwilorpndsnzwqhruky.supabase.co";
+const SUPABASE_URL = "https://nmwilorpndsnzwqhruky.supabase.co/rest/v1/";
 
 // 2) Supabase Dashboard'dan aldığınız Publishable key değerini buraya yazın.
 // Secret key veya service_role key kullanmayın.
-const SUPABASE_PUBLISHABLE_KEY = "BURAYA_SUPABASE_PUBLISHABLE_KEY";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_6e90naaunXrbVTlgmcm1iw_3eTTebiL";
 
 const SHOW_SLOTS_BUTTON_TEXT = "Oturum listesini göster";
 const SAVE_BUTTON_TEXT = "Seçili oturumu kaydet";
